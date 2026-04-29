@@ -341,6 +341,47 @@
   .tl-title { font-size: 15px; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
   .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
 
+  /* ── Setup section ── */
+  .setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
+  @media (max-width: 720px) { .setup-grid { grid-template-columns: 1fr; } }
+  .setup-steps { display: flex; flex-direction: column; gap: 0; }
+  .setup-step { display: flex; gap: 20px; padding-bottom: 28px; position: relative; }
+  .setup-step::before { content: ''; position: absolute; left: 15px; top: 32px; bottom: 0; width: 1px; background: var(--border); }
+  .setup-step:last-child::before { display: none; }
+  .setup-num {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.35);
+    display: flex; align-items: center; justify-content: center; z-index: 1;
+    font-size: 12px; font-weight: 700; color: var(--accent); font-family: 'Geist Mono', monospace;
+  }
+  .setup-body { padding-top: 5px; }
+  .setup-title { font-size: 15px; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+  .setup-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+  .code-block {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; margin-top: 10px;
+    font-family: 'Geist Mono', monospace; font-size: 12.5px;
+    color: #93c5fd; overflow-x: auto; line-height: 1.7;
+  }
+  .code-block .cmd { color: #e2e8f0; }
+  .code-block .cmt { color: var(--muted); }
+  .setup-req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .setup-req-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px;
+  }
+  .setup-req-label { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  .setup-req-val { font-size: 13px; color: #e2e8f0; font-weight: 500; }
+  .setup-req-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .btn-slack {
+    background: #4a154b; color: #fff; font-weight: 700; font-size: 15px;
+    padding: 13px 28px; border-radius: 10px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 4px 20px rgba(74,21,75,0.5);
+  }
+  .btn-slack:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(74,21,75,0.65); }
+
   /* ── CTA ── */
   .cta-section {
     padding: 96px 0; text-align: center;
@@ -388,9 +429,10 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#setup">Setup</a></li>
       <li><a href="#trust">Security</a></li>
     </ul>
-    <a href="http://localhost:8080" class="nav-cta">Open App</a>
+    <a href="https://salesforce.enterprise.slack.com/team/U08B1RM3W04" target="_blank" class="nav-cta">Get Access</a>
   </div>
 </nav>
 
@@ -411,12 +453,12 @@
     </p>
 
     <div class="hero-actions">
-      <a href="http://localhost:8080" class="btn-primary">
-        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        Open SE Board Control
+      <a href="https://salesforce.enterprise.slack.com/team/U08B1RM3W04" target="_blank" class="btn-slack">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg>
+        Get Access
       </a>
-      <a href="#features" class="btn-ghost">
-        See what's inside
+      <a href="#setup" class="btn-ghost">
+        How to set up
         <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </a>
     </div>
@@ -824,21 +866,178 @@
 
 <hr class="divider">
 
+<!-- Setup -->
+<section class="section" id="setup">
+  <div class="container">
+    <div class="section-label">Get started</div>
+    <h2 class="section-title">Up and running<br>in 60 seconds.</h2>
+    <p class="section-body">
+      No cloud account, no IT ticket, no subscription.
+      Clone, install, run — it just works on your machine.
+    </p>
+
+    <div class="setup-grid">
+      <!-- Steps -->
+      <div class="setup-steps">
+
+        <div class="setup-step">
+          <div class="setup-num">1</div>
+          <div class="setup-body">
+            <div class="setup-title">Request access on Slack</div>
+            <div class="setup-desc">
+              Drop Thomas a Slack DM — he'll share the private repo link and add you to the SE team channel.
+            </div>
+            <div style="margin-top:12px">
+              <a href="https://salesforce.enterprise.slack.com/team/U08B1RM3W04" target="_blank" class="btn-slack" style="font-size:13px;padding:9px 18px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg>
+                DM @thomas on Slack
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="setup-num">2</div>
+          <div class="setup-body">
+            <div class="setup-title">Clone &amp; install dependencies</div>
+            <div class="setup-desc">One command to install everything. Python 3.12 required.</div>
+            <div class="code-block">
+<span class="cmt"># Clone the repo</span>
+<span class="cmd">git clone &lt;repo-url&gt; se-boardcontrol</span>
+<span class="cmd">cd se-boardcontrol/dashboard</span>
+<br>
+<span class="cmt"># Install Python deps</span>
+<span class="cmd">pip install -r requirements.txt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="setup-num">3</div>
+          <div class="setup-body">
+            <div class="setup-title">Connect Salesforce &amp; Google Calendar</div>
+            <div class="setup-desc">Run the server, open the app, go to Settings — one-click OAuth for both connections.</div>
+            <div class="code-block">
+<span class="cmt"># Start the server</span>
+<span class="cmd">python3 server_optimized.py</span>
+<br>
+<span class="cmt"># Open in your browser</span>
+<span class="cmd">open http://localhost:8080</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <div class="setup-num">4</div>
+          <div class="setup-body">
+            <div class="setup-title">Add your Gemini API key (optional)</div>
+            <div class="setup-desc">
+              For AI features — meeting prep, note summaries, SE field suggestions.
+              Free tier is sufficient for daily use.
+            </div>
+            <div class="code-block">
+<span class="cmt"># Create a key at aistudio.google.com</span>
+<span class="cmd">echo "YOUR_KEY" &gt; ~/.gemini_api_key</span>
+<br>
+<span class="cmt"># Or paste it directly in Settings &gt; Gemini</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Requirements + tips -->
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <div class="ui-card">
+          <div class="ui-card-header">
+            <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            Requirements
+          </div>
+          <div class="ui-card-body" style="display:flex;flex-direction:column;gap:8px">
+            <div class="setup-req-grid">
+              <div class="setup-req-card">
+                <div class="setup-req-label">Python</div>
+                <div class="setup-req-val">3.11 or 3.12</div>
+                <div class="setup-req-sub">brew install python@3.12</div>
+              </div>
+              <div class="setup-req-card">
+                <div class="setup-req-label">Salesforce</div>
+                <div class="setup-req-val">Org62 access</div>
+                <div class="setup-req-sub">EBU SE role required</div>
+              </div>
+              <div class="setup-req-card">
+                <div class="setup-req-label">Google</div>
+                <div class="setup-req-val">Calendar access</div>
+                <div class="setup-req-sub">OAuth via Settings</div>
+              </div>
+              <div class="setup-req-card">
+                <div class="setup-req-label">Gemini</div>
+                <div class="setup-req-val">Optional</div>
+                <div class="setup-req-sub">Free tier at aistudio.google.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-card">
+          <div class="ui-card-header">
+            <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Tips for daily use
+          </div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;font-size:13px">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0">⌘K</span>
+              <span style="color:var(--muted)">Global search across all deals, accounts, AEs</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;font-family:monospace">##</span>
+              <span style="color:var(--muted)">Type in notes to auto-create a heading</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;font-family:monospace">-&nbsp;</span>
+              <span style="color:var(--muted)">Type "- " to start a bullet list in notes</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px">
+              <span style="color:var(--green);font-weight:700;flex-shrink:0">Tab</span>
+              <span style="color:var(--muted)">Indent a list item; Shift+Tab to outdent</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0">pin</span>
+              <span style="color:var(--muted)">Hover a card → Pin to keep it at the top</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.2);border-radius:10px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px">Auto-start on login (macOS)</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.65">
+            Add a Launch Agent or use <code style="font-family:monospace;font-size:11px;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px">launchctl</code> to start the server automatically at login. Thomas can share the plist if needed.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="container" style="position:relative;z-index:1">
     <div class="hero-badge" style="margin-bottom:24px">
       <div class="pulse"></div>
-      Running on your machine
+      Built for the SE team
     </div>
-    <h2 class="cta-title">Ready in 60 seconds.</h2>
+    <h2 class="cta-title">Ready to take control?</h2>
     <p class="cta-sub">
-      Install once, use every day. No account, no subscription, no IT ticket.
-      Just your pipeline, finally under control.
+      Join the SEs already using it every day.
+      It takes 60 seconds to set up and zero seconds to love.
     </p>
-    <a href="http://localhost:8080" class="btn-primary" style="font-size:16px;padding:15px 32px">
-      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-      Open SE Board Control
+    <a href="https://salesforce.enterprise.slack.com/team/U08B1RM3W04" target="_blank" class="btn-slack" style="font-size:16px;padding:15px 32px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg>
+      Get Access — DM Thomas
     </a>
     <p class="cta-note">
       <strong>Local only.</strong> Your data never leaves localhost.
