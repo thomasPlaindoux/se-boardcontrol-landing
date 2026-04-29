@@ -313,8 +313,23 @@
   .dsr-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; }
 
   /* ── Trust section ── */
-  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
-  @media (max-width: 720px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  @media (max-width: 900px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .trust-grid { grid-template-columns: 1fr; } }
+  .trust-card-full {
+    grid-column: 1 / -1;
+    background: var(--bg2); border: 1px solid rgba(74,21,75,0.35);
+    border-radius: var(--r); padding: 24px 28px;
+  }
+  .trust-slack-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .trust-slack-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(74,21,75,0.4); border: 1px solid rgba(74,21,75,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .trust-slack-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #4a154b; color: #fff; font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 8px; text-decoration: none;
+    margin-top: 14px; transition: opacity .15s;
+  }
+  .trust-slack-cta:hover { opacity: .85; }
   .trust-card {
     background: var(--bg2); border: 1px solid var(--border);
     border-radius: var(--r); padding: 24px 20px; text-align: center;
@@ -848,17 +863,52 @@
       </div>
       <div class="trust-card">
         <div class="trust-icon">
-          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:var(--accent)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        </div>
-        <div class="trust-title">Sub-200ms response</div>
-        <div class="trust-desc">No network round-trips for UI interactions. State lives in Alpine.js reactive memory. Even on slow SF API days, the UI never blocks.</div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon">
           <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#fbbf24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
         </div>
         <div class="trust-title">Your Gemini key</div>
         <div class="trust-desc">AI features use your own Gemini API key stored in <code style="font-size:11px">~/.gemini_api_key</code>. No shared inference endpoint, no prompt leakage.</div>
+      </div>
+
+      <!-- Slack Backup — full-width card -->
+      <div class="trust-card-full">
+        <div class="trust-slack-header">
+          <div class="trust-slack-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#e879f9"><path d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#e2e8f0">Automatic daily backup to Slack</div>
+            <div style="font-size:12.5px;color:var(--muted);margin-top:2px">Your deal notes, safe in Slack — even if your laptop burns</div>
+          </div>
+        </div>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px">
+          SE Board Control stores all notes locally — which is great for privacy, but means they only live on your machine.
+          The <strong style="color:#e2e8f0">SE Note Backup</strong> Slack Workflow runs every day and automatically
+          pushes your deal notes as Slack Canvases, one per opportunity. They're searchable, shareable, and survive a laptop wipe.
+          Each canvas is tagged <code style="font-size:11px;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px">#seboardnote</code> for easy retrieval.
+        </p>
+        <div style="display:flex;align-items:center;gap:24px;margin-top:16px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:11px;font-weight:700;color:#e879f9;text-transform:uppercase;letter-spacing:.05em">How it works</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(232,121,249,0.15);border:1px solid rgba(232,121,249,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#e879f9;flex-shrink:0">1</span>
+                Copy the Slack Workflow to your workspace (button below)
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(232,121,249,0.15);border:1px solid rgba(232,121,249,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#e879f9;flex-shrink:0">2</span>
+                Configure the webhook URL in SE Board Control Settings
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(232,121,249,0.15);border:1px solid rgba(232,121,249,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#e879f9;flex-shrink:0">3</span>
+                Notes sync to Slack Canvases automatically every day
+              </div>
+            </div>
+          </div>
+          <a href="https://slack.com/shortcuts/Ft0AUYD1092M/a243571c15e8096635d2ac6a6be6eb68" target="_blank" class="trust-slack-cta" style="margin-top:0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg>
+            Copy Slack Workflow — SE Note Backup
+          </a>
+        </div>
       </div>
     </div>
   </div>
