@@ -456,7 +456,7 @@
   <div class="container">
     <div class="hero-badge">
       <div class="pulse"></div>
-      Built for SEs, by an SE
+      Built by SEs, for SEs
     </div>
 
     <h1>Your pipeline.<br>Your notes.<br>Zero friction.</h1>
@@ -922,8 +922,7 @@
     <div class="section-label">Get started</div>
     <h2 class="section-title">Up and running<br>in 60 seconds.</h2>
     <p class="section-body">
-      No cloud account, no IT ticket, no subscription.
-      Clone, install, run — it just works on your machine.
+      There's a one-click installer for macOS. Or do it manually if you prefer full control.
     </p>
 
     <div class="setup-grid">
@@ -949,16 +948,45 @@
         <div class="setup-step">
           <div class="setup-num">2</div>
           <div class="setup-body">
-            <div class="setup-title">Clone &amp; install dependencies</div>
-            <div class="setup-desc">One command to install everything. Python 3.12 required.</div>
-            <div class="code-block">
-<span class="cmt"># Clone the repo</span>
+            <div class="setup-title">Install — one click or one command</div>
+            <div class="setup-desc" style="margin-bottom:14px">
+              The automatic installer handles Python, dependencies, Launch Agent (auto-start), and PATH for you.
+            </div>
+
+            <!-- 1-click installer — primary -->
+            <div style="background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.25);border-radius:10px;padding:16px 18px;margin-bottom:12px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+                <span style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.05em">Recommended</span>
+                <span style="font-size:11px;color:var(--muted)">macOS · auto-installs everything</span>
+              </div>
+              <div class="code-block" style="margin-top:0;background:rgba(0,0,0,0.3)">
+<span class="cmt"># Paste in Terminal — installs &amp; launches the app</span>
+<span class="cmd">bash &lt;(curl -sL https://raw.githubusercontent.com/thomasPlaindoux/sf-se-boardcontrol/main/dashboard/install.sh)</span>
+              </div>
+              <div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6">
+                Installs Python deps, creates a <code style="font-size:11px;background:rgba(255,255,255,0.06);padding:1px 4px;border-radius:3px">se-dashboard</code> command, registers a macOS Launch Agent so the server auto-starts at login, and opens the app.
+              </div>
+            </div>
+
+            <!-- Manual — collapsed for techies -->
+            <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden">
+              <summary style="padding:12px 16px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;user-select:none">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="transition:transform .2s"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                Manual install (for techies)
+              </summary>
+              <div style="padding:0 16px 16px;border-top:1px solid var(--border)">
+                <div class="code-block" style="margin-top:14px">
+<span class="cmt"># Clone after getting access from Thomas</span>
 <span class="cmd">git clone &lt;repo-url&gt; se-boardcontrol</span>
 <span class="cmd">cd se-boardcontrol/dashboard</span>
-<br>
-<span class="cmt"># Install Python deps</span>
 <span class="cmd">pip install -r requirements.txt</span>
-            </div>
+<br>
+<span class="cmt"># Start</span>
+<span class="cmd">python3 server_optimized.py</span>
+<span class="cmd">open http://localhost:8080</span>
+                </div>
+              </div>
+            </details>
           </div>
         </div>
 
@@ -966,14 +994,7 @@
           <div class="setup-num">3</div>
           <div class="setup-body">
             <div class="setup-title">Connect Salesforce &amp; Google Calendar</div>
-            <div class="setup-desc">Run the server, open the app, go to Settings — one-click OAuth for both connections.</div>
-            <div class="code-block">
-<span class="cmt"># Start the server</span>
-<span class="cmd">python3 server_optimized.py</span>
-<br>
-<span class="cmt"># Open in your browser</span>
-<span class="cmd">open http://localhost:8080</span>
-            </div>
+            <div class="setup-desc">Open the app, go to Settings — one-click OAuth for both. The Welcome screen walks you through it.</div>
           </div>
         </div>
 
@@ -983,13 +1004,7 @@
             <div class="setup-title">Add your Gemini API key (optional)</div>
             <div class="setup-desc">
               For AI features — meeting prep, note summaries, SE field suggestions.
-              Free tier is sufficient for daily use.
-            </div>
-            <div class="code-block">
-<span class="cmt"># Create a key at aistudio.google.com</span>
-<span class="cmd">echo "YOUR_KEY" &gt; ~/.gemini_api_key</span>
-<br>
-<span class="cmt"># Or paste it directly in Settings &gt; Gemini</span>
+              Free tier at <code style="font-size:11px;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px">aistudio.google.com</code> is more than enough.
             </div>
           </div>
         </div>
